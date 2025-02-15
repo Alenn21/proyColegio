@@ -1,16 +1,39 @@
 var spanPassword = document.getElementById('span-password')
 var btnLogin = document.getElementById('btn-login')
 var selectUser = document.getElementById('select-user')
-var userSelected
-
+var txtMail = document.getElementById('txt-email')
+var txtPassword = document.getElementById('txt-password')
 
 function start(){
     spanPassword.addEventListener('click',changeEyeSpan)
     btnLogin.addEventListener('click', login)
 }
-function login(){
-    console.log("hola");
+function login(event) {
+    event.preventDefault(); // Evita que el formulario se recargue
+    console.log("Entre");
+    const email = txtMail.value;
+    const password = txtPassword.value;
+    const role = selectUser.value;
+    fetch("http://localhost:3000/login",
+        {
+            method: "post",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                email,
+                password,
+                role
+            })
+        }
+    ).then(function(res){
+        if(res.ok){
+            console.log("Si se pudo jeje");
+        }else{
+            console.log("No se pudo")
+        }
+    })
+
 }
+
 function changeEyeSpan(){
     var passwordInput = document.getElementById("txt-password");
     var eyeIcon = document.getElementById("eye-icon");
