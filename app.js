@@ -4,9 +4,17 @@ app.use(express.json())
 const cors = require('cors');
 app.use(cors());
 var {connection} = require("./dbconfig")
+const path = require('path');
+
 app.listen(3000, function() {
     console.log('Servidor corriendo en http://localhost:3000')
 })
+
+// Servir la carpeta "public" (CSS, imágenes, JS)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Servir la carpeta "views" (HTML)
+app.use(express.static(path.join(__dirname, 'views')));
 
 app.post("/login", (req, res) => {
     const { email, password } = req.body
