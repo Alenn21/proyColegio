@@ -1,10 +1,10 @@
 const menu = document.getElementById("menu-items")
-
+const spanSession = document.getElementById("li-session")
 document.addEventListener("DOMContentLoaded", function() {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
-        window.location.href = "login.html"
+        window.location.href = "/login"
         return;
     }
     console.log(user.role+"Usuario Logueado: "+user.email)
@@ -22,6 +22,12 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
     }
 })
+
+spanSession.addEventListener('click',function(){
+    console.log("Entre a cerrar Sesion");
+    localStorage.removeItem("user")
+    reload()
+})
 menu.addEventListener("click", function (event) {
     console.log("entre1");
     if (event.target.tagName === "A") {
@@ -34,7 +40,6 @@ menu.addEventListener("click", function (event) {
 })
 
 function loadContent(page) {
-    console.log("entre2");
 
     fetch(`http://localhost:3000/${page}.html`) 
         .then(response => {
@@ -47,5 +52,8 @@ function loadContent(page) {
             document.getElementById("content-container").innerHTML = html;
         })
         .catch(error => console.error("Error cargando la página:", error));
+}
+function reload(){
+    location.reload()
 }
 

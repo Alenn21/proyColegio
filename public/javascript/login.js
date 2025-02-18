@@ -9,7 +9,7 @@ function login(event) {
     event.preventDefault(); // Evita que el formulario se recargue
     const email = txtMail.value;
     const password = txtPassword.value;
-    fetch("http://localhost:3000/login", {
+    fetch("/login/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -21,13 +21,14 @@ function login(event) {
                 email: data.user.email, 
                 role: data.user.role 
             })); //Guardar en local la info del usuario
-            window.location.href = "../views/index.html" 
+            window.location.href = "/";
+            console.log("Inicio Sesión: "+data.user.email+" "+data.user.role)
         } else {
             alert("Credenciales incorrectas") 
+            reload()
         }
     })
     .catch(error => console.error("Error en el login:", error))
-
 }
 
 function changeEyeSpan(){

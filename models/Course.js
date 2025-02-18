@@ -1,4 +1,4 @@
-const connection = require("../dbconfig");
+const { connection } = require("../dbconfig");
 
 const Course = {
     create: (name, teacher_id, callback) => {
