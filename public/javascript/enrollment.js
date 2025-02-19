@@ -1,7 +1,7 @@
 function start() {
     var user = JSON.parse(localStorage.getItem("user"));
     if (!user || !user.id) {
-        alert("Usuario no identificado.");
+        alert("Usuario no identificado.")
         return;
     }
 
@@ -47,8 +47,8 @@ function enrollStudent(courseId) {
     })
     .then(response => response.json())
     .then(data => {
-        alert(data.message); // Mensaje de éxito o error
-        start(); // Recargar la tabla para actualizar los cursos disponibles
+        alert(data.message); 
+        start(); 
     })
     .catch(error => {
         console.error("Error al inscribirse:", error);
