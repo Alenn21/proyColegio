@@ -41,9 +41,47 @@
       </div>
   </nav>
       <!-- Contenedor principal -->
-      <div id="content-container">
-          <h2 class="text-white">Bienvenido al sistema del colegio San Marino</h2>
-      </div>
+      <div id="content-container" class="show">
+        <h2 class="text-center">Bienvenido al Sistema del Colegio San Marino</h2>
+        <p class="text-center">Seleccione una opción en el menú para comenzar.</p>
+    
+        <!-- Carrusel de imágenes -->
+        <div id="carouselExample" class="carousel slide mt-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../public/img/colegio1.jpg" class="d-block w-100" alt="Instalaciones del colegio">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Instalaciones Modernas</h5>
+                        <p>Con tecnología de punta para el aprendizaje.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../public/img/colegio2.jpg" class="d-block w-100" alt="Instalaciones del colegio">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Clases Dinámicas</h5>
+                        <p>Un ambiente de aprendizaje interactivo.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../public/img/colegio3.jpg" class="d-block w-100" alt="Instalaciones del colegio">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Actividades Extracurriculares</h5>
+                        <p>Desarrollo integral de los estudiantes.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Botones de navegación -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
       <script src="../public/javascript/colegio.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>

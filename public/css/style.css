@@ -223,3 +223,25 @@ tr:hover {
 .form-btn:hover {
     background: #1c3f66;
 }
+
+/* Estilos generales del carrusel */
+.carousel {
+    max-width: 800px;
+    margin: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustar imágenes del carrusel */
+.carousel img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/* Estilos de los textos sobre el carrusel */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 8px;
+}
