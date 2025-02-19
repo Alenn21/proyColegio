@@ -1,16 +1,33 @@
 <html>
     <head>
+        <title>Nuevo Curso</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script>
+            if (!localStorage.getItem("user")) {
+                window.location.href = "/login";
+            }  
+        </script>
     </head>
     <body>
-        <h2>Crear Curso</h2>
-        <form id="create-course-form">
-            <div class="mb-3">
-                <label for="course-name" class="form-label">Nombre del Curso</label>
-                <input type="text" class="form-control" id="course-name" required>
-            </div>
-            <button id="btn-create" type="submit" class="btn btn-primary">Crear Curso</button>
-        </form>
+        <div class="form-container">
+            <h2>Crear Curso</h2>
+            <form id="create-course-form">
+                <div class="mb-3">
+                    <label for="course-name" class="form-label">Nombre del Curso</label>
+                    <input type="text" class="form-control" id="course-name" required>
+                </div>
+                <button id="btn-create" type="submit" class="btn btn-success">Crear Curso</button>
+            </form>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user) {
+                window.location.href = "/login"
+                return;
+            }
+            });
+        </script>
     </body>
 </html>

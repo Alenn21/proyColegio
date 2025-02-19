@@ -1,7 +1,7 @@
 function start() {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (!user || user.role !== 2) {
-        console.error("No se encontró un usuario válido");
+    if (!user) {
+        window.location.href = "/login"
         return;
     }
     

@@ -1,7 +1,8 @@
 function start() {
-    var user = JSON.parse(localStorage.getItem("user"));
-    if (!user || !user.id) {
-        alert("Usuario no identificado.")
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+        window.location.href = "/login"
         return;
     }
 
@@ -19,7 +20,7 @@ function start() {
                                     <td>${course.course_name}</td>
                                     <td>${course.teacher}</td>
                                     <td>
-                                        <button onclick="enrollStudent(${course.id})">Inscribirse</button>
+                                        <button class="btn btn-success" onclick="enrollStudent(${course.id})">Inscribirse</button>
                                     </td>
                                 </tr>`;
                     tableBody.innerHTML += row;

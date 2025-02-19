@@ -1,27 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=DynaPuff:wght@400..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    height: 100vh;
-    background-color: #f8f9fa;
-    margin: 0;
-    font-family: "Work Sans", serif;
-}
+    /* Fondo con degradado */
+    body {
+        background: linear-gradient(135deg, #4a90e2, #1c3f66);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-form {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 360px; 
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /*Espacio entre columnas y Filas*/
-}
+    /* Caja del formulario */
+    .login-box {
+        width: 320px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.5s ease-in-out;
+    }
 
-.form-select, #btn-login {
-    width: 100%;
-    height: 40px;
-}
+    /* Animación de entrada */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Estilos de los inputs */
+    .input-group-text {
+        background: #f8f9fa;
+        border-right: none;
+    }
+
+    .form-control:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+    }
+
+    /* Botón */
+    .btn-primary {
+        background: #6a11cb;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+        background: #2575fc;
+    }
+
+    /* Ícono de ojo */
+    .toggle-password {
+        cursor: pointer;
+    }
