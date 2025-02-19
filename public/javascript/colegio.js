@@ -29,29 +29,59 @@ spanSession.addEventListener('click',function(){
     reload()
 })
 menu.addEventListener("click", function (event) {
-    console.log("entre1");
+
     if (event.target.tagName === "A") {
-        console.log("entre3");
         event.preventDefault() 
         var page = event.target.getAttribute("data-pagename")
-        console.log(page);
         if (page) loadContent(page)
     }
 })
 
 function loadContent(page) {
-
-    fetch(`http://localhost:3000/${page}.html`) 
+    var pageRoute
+    var scriptRoute
+    switch(page){
+        case "teacherCourse":
+            pageRoute="course/"
+            scriptRoute="/public/javascript/teacherCourse.js"
+            break;
+        case "createCourse":
+            pageRoute="course/create"
+            scriptRoute="/public/javascript/createCourse.js"
+            break;
+        case "createStudent":
+            pageRoute="student/create"
+            scriptRoute="/public/javascript/createStudent.js"
+            break;
+        case "studentCourse":
+            pageRoute=""
+            break;
+        case "enrollment":
+            pageRoute=""
+            break;
+        default:
+            pageRoute=""
+            break;
+    }
+    fetch(`/${pageRoute}`) 
         .then(response => {
             if (!response.ok) {
-                throw new Error("Página no encontrada");
+                throw new Error("Página no encontrada")
             }
             return response.text();
         })
         .then(html => {
-            document.getElementById("content-container").innerHTML = html;
+            document.getElementById("content-container").innerHTML = html
+            if (scriptRoute) {
+                let script = document.createElement('script');
+                script.src = scriptRoute;
+                script.onload = () => {
+                    start(); 
+                };
+                document.body.appendChild(script);
+            }
         })
-        .catch(error => console.error("Error cargando la página:", error));
+        .catch(error => console.error("Error cargando la página:", error))
 }
 function reload(){
     location.reload()

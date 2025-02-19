@@ -22,6 +22,7 @@ const userController = {
                         success: true,
                         message: "Login exitoso",
                         user: {
+                            id: studentResults[0].id,
                             email: auxUser.email,
                             role: 1,
                             name: studentResults[0].name,
@@ -39,11 +40,11 @@ const userController = {
                     if (teacherResults.length === 0) {
                         return res.json({ success: false, message: "No se encontró información del profesor" });
                     }
-    
                     res.json({
                         success: true,
                         message: "Login exitoso",
                         user: {
+                            id: teacherResults[0].id,
                             email: auxUser.email,
                             role: 2,
                             name: teacherResults[0].name,
@@ -54,6 +55,32 @@ const userController = {
             } else {
                 res.status(403).json({ success: false, message: "Rol no reconocido" });
             }
+        });
+    },
+
+    create: (req,res) => {
+        console.log("Datos recibidos en /login/create:", req.body);
+        const { email, password,  role_id } = req.body
+        User.create(email, password, role_id, (err, result) => {
+            if (err) return res.status(500).json({ error: "Error al crear Usuario" });
+            res.json({ success: true, message: "Usuario creado exitosamente"});
+        });
+    },
+    findByEmail: (req, res) => {
+        console.log("En finEmail "+req.query)
+        const { email } = req.query;     
+        if (!email) {
+            return res.status(400).json({ error: "Falta el email" });
+        }  
+        User.findByEmail(email, (err, result) => {
+            if (err) {
+                console.error("Error en la consulta:", err);
+                return res.status(500).json({ error: "Error en la consulta" });
+            }
+            if (!result || result.length === 0) { 
+                return res.status(404).json({ error: "Usuario no encontrado" });
+            }
+            res.json({ success: true, user_id: result[0].id });
         });
     }
 };

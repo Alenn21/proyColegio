@@ -17,9 +17,12 @@ function login(event) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            localStorage.setItem("user", JSON.stringify({ 
+            localStorage.setItem("user", JSON.stringify({
+                id: data.user.id, 
                 email: data.user.email, 
-                role: data.user.role 
+                role: data.user.role,
+                name:  data.user.name,
+                lastname: data.user.lastname
             })); //Guardar en local la info del usuario
             window.location.href = "/";
             console.log("Inicio Sesión: "+data.user.email+" "+data.user.role)

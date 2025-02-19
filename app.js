@@ -2,6 +2,7 @@ var express = require('express')
 const cors = require('cors');
 var {connection} = require("./dbconfig")
 const path = require('path');
+var createError = require('http-errors');
 
 //Routes
 const courseRouter = require('./routes/courseRouter')
@@ -30,6 +31,10 @@ app.use('/login',userRouter)
 app.use('/course',courseRouter)
 app.use('/student',studentRouter)
 app.use('/student/enrollments', enrollmentRouter)
+
+app.use((req, res) => {
+    res.status(404).json({ error: "404 - Página no encontrada" });
+});
 
 
 

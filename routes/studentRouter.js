@@ -4,5 +4,8 @@ var studentController = require('../controllers/studentController')
 
 router.get('/',studentController.getAllStudents)
 router.get('/courses',studentController.getStudentCourses)
-router.post('create', studentController.createStudent)
+router.get("/create", (req, res) => {
+    res.sendFile("createStudent.html", { root: "views" });
+});
+router.post('/insert', studentController.createStudent)
 module.exports = router

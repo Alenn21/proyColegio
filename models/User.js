@@ -12,12 +12,12 @@ const User = {
     },
 
     findInStudents: (id, callback) => {
-        const sql = "SELECT name, lastname FROM students WHERE user_id = ?"
+        const sql = "SELECT id, name, lastname FROM students WHERE user_id = ?"
         connection.query(sql,[id],callback)
     },
 
     findInTeachers: (id, callback) => {
-        const sql = "SELECT name, lastname FROM teachers WHERE user_id = ?"
+        const sql = "SELECT id, name, lastname FROM teachers WHERE user_id = ?"
         connection.query(sql,[id],callback)
     }
 };
