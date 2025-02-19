@@ -30,7 +30,7 @@ app.use('/',indexRouter)
 app.use('/login',userRouter)
 app.use('/course',courseRouter)
 app.use('/student',studentRouter)
-app.use('/student/enrollments', enrollmentRouter)
+app.use('/enrollment', enrollmentRouter)
 
 app.use((req, res) => {
     res.status(404).json({ error: "404 - Página no encontrada" });

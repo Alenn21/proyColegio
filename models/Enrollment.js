@@ -11,13 +11,14 @@ const Enrollment = {
         connection.query(sql, [course_id, student_id], callback);
     },
 
-    getStudentEnrollments: (student_id, callback) => {
+    getStudentNotEnrolledCourses: (student_id, callback) => {
         const sql = `
-            SELECT e.id, c.name as course_name, t.name as teacher_name, t.lastname as teacher_lastname
-            FROM enrollments e
-            JOIN courses c ON e.course_id = c.id
+            SELECT c.id, c.name AS course_name, CONCAT(t.name, ' ', t.lastname) AS teacher
+            FROM courses c
             JOIN teachers t ON c.teacher_id = t.id
-            WHERE e.student_id = ?
+            WHERE c.id NOT IN (
+                SELECT e.course_id FROM enrollments e WHERE e.student_id = ?
+            )
         `;
         connection.query(sql, [student_id], callback);
     },

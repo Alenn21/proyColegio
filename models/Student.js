@@ -18,7 +18,7 @@ const Student = {
 
     getCourses: (student_id, callback) => {
         const sql = `
-            SELECT c.id, c.name, t.name as teacher_name, t.lastname as teacher_lastname
+            SELECT  c.name, CONCAT(t.name, ' ', t.lastname) AS teacher
             FROM enrollments e
             INNER JOIN courses c ON e.course_id = c.id
             INNER JOIN teachers t ON c.teacher_id = t.id
