@@ -7,7 +7,13 @@ const Course = {
     },
 
     getByTeacher: (teacher_id, callback) => {
-        const sql = "SELECT * FROM courses WHERE teacher_id = ?"
+        const sql = `SELECT 
+                    CONCAT(s.name,' ',s.lastname) AS student,  
+                    c.name AS course_name
+                    FROM enrollments e
+                    INNER JOIN students s ON e.student_id = s.id
+                    INNER JOIN courses c ON e.course_id = c.id
+                    WHERE c.teacher_id = ?`;
         connection.query(sql, [teacher_id], callback)
     }
 };

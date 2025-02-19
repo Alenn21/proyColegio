@@ -1,5 +1,4 @@
 function start() {
-    console.log("entreTeacherCourse")
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user || user.role !== 2) {
         console.error("No se encontró un usuario válido");
@@ -7,7 +6,6 @@ function start() {
     }
     
     var teacherId = user.id;
-    console.log(teacherId)
     if (!teacherId) {
         console.error("No se encontró un ID de profesor válido");
         return;
@@ -24,8 +22,8 @@ function start() {
             } else {
                 data.courses.forEach(course => {
                     const row = `<tr>
-                                            <td>${course.id}</td>
-                                            <td>${course.name}</td>
+                                            <td>${course.student}</td>
+                                            <td>${course.course_name}</td>
                                         </tr>`;
                     tableBody.innerHTML += row;
                 });
