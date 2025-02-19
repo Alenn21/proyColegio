@@ -2,19 +2,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrícula de Cursos</title>
+    <title>Inscripción a Cursos</title>
 </head>
 <body>
-    <h1>Matricularse en un Curso</h1>
-    <form id="enrollment-form">
-        <label for="student-id">ID del Estudiante:</label>
-        <input type="text" id="student-id" required>
-        
-        <label for="course-id">ID del Curso:</label>
-        <input type="text" id="course-id" required>
-        
-        <button type="submit">Matricular</button>
-    </form>
-    <p id="message"></p>
+    <h1>Inscripción a Cursos</h1>
+    <table class ="table">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Profesor</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="courses-table">
+            <!-- Aquí se llenarán los cursos disponibles -->
+        </tbody>
+    </table>
+    <script src="/public/enrollment.js"></script>
 </body>
 </html>

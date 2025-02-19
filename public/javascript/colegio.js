@@ -58,7 +58,7 @@ function loadContent(page) {
             scriptRoute="/public/javascript/studentCourse.js"
             break;
         case "enrollment":
-            pageRoute=""
+            pageRoute="enrollment"
             scriptRoute="/public/javascript/enrollment.js"
             break;
         default:
